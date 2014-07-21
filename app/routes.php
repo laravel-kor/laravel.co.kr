@@ -16,12 +16,12 @@
 // Home
 Route::get('/', function(){
   $posts = Post::orderBy('id', 'desc')->take(15)->get();
-  
+
   return View::make('home')->with(array(
     'posts' => $posts,
     'categories' => Config::get('site.postCategories')
   ));
-  
+
 });
 
 Route::get('/help', function(){
@@ -38,14 +38,14 @@ Route::get('/docs', function(){
 
 Route::get('/docs/{page}', function($page){
   $path = __DIR__ . '/../app/views/docs/ko/' . $page . '.md';
-  
+
   if(File::exists($path))
   {
     $file = File::get($path);
   }else{
     return 'clone the repository first!';
   }
-  
+
   $markdown = new MarkdownExtraParser();
   return View::make('docs.index')->with(array(
     'content' => ($markdown->transformMarkdown($file)),
@@ -92,11 +92,11 @@ Route::get('/search/{query?}', function($query){
 });
 
 Route::get('/changelog', function(){
-    
+
   $path = __DIR__ . '/../changelog.md';
-  
+
   $markdown = new MarkdownParser();
-  
+
   return View::make('changelog')->with(array(
     'content' => ($markdown->transformMarkdown(File::get($path)))
   ));
@@ -111,14 +111,15 @@ Route::post('/login', 'AccountController@postLogin');
 Route::get('/register', 'AccountController@getRegister');
 Route::post('/register', 'AccountController@postRegister');
 Route::get('/logout', 'AccountController@getLogout');
-Route::controller('account', 'AccountController');
+Route::get('account/edit', ['uses'=>'AccountController@getEdit']);
+Route::post('account/edit', ['uses'=>'AccountController@postEdit']);
 
 
 // Users
 Route::get('/users/{userId}/posts', 'UserController@getPostsById');
 Route::get('/users/{userId}/{username}/posts', 'UserController@getPostsById');
 Route::get('/users/{userId}/{username?}', 'UserController@getById');
-Route::controller('users', 'UserController');
+Route::get('users', ['uses'=>'UserController@index']);
 
 
 // Posts
@@ -131,7 +132,7 @@ Route::get('/posts/{postId}', 'PostController@getById')->where('category', '[0-9
 Route::get('/posts/{postId}/edit', 'PostController@getEdit');
 Route::post('/posts/{postId}/edit', 'PostController@postEdit');
 Route::get('/posts/{postId}/delete', 'PostController@getDelete');
-Route::controller('posts', 'PostController');
+Route::get('posts', ['uses'=>'PostController@getIndex']);
 
 
 // Tags

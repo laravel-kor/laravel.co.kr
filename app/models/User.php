@@ -53,7 +53,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
   {
     return $this->belongsToMany('Role', 'role_user')->withTimestamps();
   }
-  
+
   public function posts()
   {
     return $this->hasMany('Post');
@@ -72,7 +72,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     return false;
   }
 
-   
+
   public function hasAnyRole($keys)
   {
     if( ! is_array($keys))
@@ -90,5 +90,20 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
     return false;
   }
+
+	public function getRememberToken()
+	{
+	    return $this->remember_token;
+	}
+
+	public function setRememberToken($value)
+	{
+	    $this->remember_token = $value;
+	}
+
+	public function getRememberTokenName()
+	{
+	    return 'remember_token';
+	}
 
 }
