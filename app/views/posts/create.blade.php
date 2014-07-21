@@ -2,21 +2,32 @@
 
 @section('scripts')
 @parent
-<script src="{{ asset('js/Markdown.Converter.js') }}"></script>
-<script src="{{ asset('js/Markdown.Sanitizer.js') }}"></script>
+<script src="{{ asset('js/marked.js') }}"></script>
 <script src="{{ asset('js/jquery.autosize.min.js') }}"></script>
 <script>
 $(function(){
 
-  var converter = new Markdown.Converter();
-  
+  // var converter = new Markdown.Converter();
+
   $('#inputContent').on('keyup', function(){
     var text = $(this).val();
-    $('#postPreview').html(converter.makeHtml(text)).find('pre code').each(function(i, e) {hljs.highlightBlock(e)});
+
+    var markdowned = marked(text, {
+        renderer: new marked.Renderer(),
+        gfm: true,
+        tables: true,
+        breaks: false,
+        pedantic: false,
+        sanitize: true,
+        smartLists: true,
+        smartypants: false
+    });
+
+    $('#postPreview').html(markdowned).find('pre code').each(function(i, e) {hljs.highlightBlock(e)});
   }).trigger('keyup');
-  
+
   $('textarea').autosize();
-  
+
 })
 </script>
 @stop
@@ -33,7 +44,7 @@ $(function(){
   <div class="span9">
     <form method="post">
       <input type="hidden" name="csrf_token" value="{{ Session::getToken() }}" />
-      
+
       <div class="control-group {{ ($errors->has('title') ? 'error' : '') }}">
         <label class="control-label" for="inputTitle">제목</label>
         <div class="controls">
@@ -41,7 +52,7 @@ $(function(){
           {{ $errors->first('title') }}
         </div>
       </div>
-      
+
       <div class="control-group {{ ($errors->has('category') ? 'error' : '') }}">
         <label class="control-label" for="inputCategory">분류</label>
           <div class="controls">
@@ -49,7 +60,7 @@ $(function(){
           </div>
           {{ $errors->first('category') }}
       </div>
-      
+
       <div class="control-group {{ ($errors->has('content') ? 'error' : '') }}">
         <label class="control-label" for="inputContent">내용 <a class="pull-right" href="http://daringfireball.net/projects/markdown/"><small>Markdown</small></a></label>
         <div class="controls">
@@ -57,14 +68,14 @@ $(function(){
           {{ $errors->first('content') }}
         </div>
       </div>
-      
+
       <div class="control-group">
         <label class="control-label">미리보기</label>
         <div class="controls preview" id="postPreview">
         {{ $markdown->transformMarkdown(Input::old('content')) }}
         </div>
       </div>
-    
+
       <div class="control-group">
         <div class="controls">
           <button type="submit" class="btn">글쓰기</button>
