@@ -1,0 +1,7 @@
+/vendor
+/workbench
+composer.phar
+.DS_Store
+.c9revisions
+.htaccess
+error_log

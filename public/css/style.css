@@ -1,0 +1,159 @@
+body,
+button,
+input,
+button,
+select,
+textarea{
+  font-family : "Malgun Gothic",Gulim,"Segoe UI","Helvetica",Garuda,Arial,sans-serif !important
+}
+
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+ul,
+ol{
+  list-style-position: inside;
+  margin-bottom: 15px;
+}
+p{
+  line-height: 24px;
+  margin-bottom: 15px;
+}
+pre{
+  margin-bottom: 15px;
+}
+
+.label-cat-notice {
+  background-color : #B43C6E;
+  font-weight: normal;
+}
+.label-cat-free {
+  background-color : #3C58B4;
+  font-weight: normal;
+}
+.label-cat-tuts {
+  background-color : #469D34;
+  font-weight: normal;
+}
+.label-cat-tips {
+  background-color : #71349D;
+  font-weight: normal;
+}
+.label-cat-help {
+  background-color : #40BFAE;
+  font-weight: normal;
+}
+.label-cat-packages {
+  background-color : #B040BF;
+  font-weight: normal;
+}
+.label-cat-sites {
+  background-color : #BF9140;
+  font-weight: normal;
+}
+.label-cat-jobs {
+  background-color : #C16344;
+  font-weight: normal;
+}
+
+.doc-index {
+  line-height: 26px ;
+}
+.doc-index h1 {
+  margin-bottom: 20px;
+}
+.doc-index h2 {
+  margin-bottom: 18px;
+}
+.doc-index pre{
+  border: none;
+  background-color: #fff;
+  padding: 0;
+  border-radius:0;
+  margin-bottom: 30px;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  margin-top: 3px;
+}
+
+.brand {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/*
+.posts-index table {
+  table-layout: fixed;
+}
+.posts-index table th,
+.posts-index table td {
+  overflow: hidden;
+  text-align: center;
+}
+.posts-index table td.post-title {
+  text-align: left;
+}
+.posts-index table th.post-id {
+  width: 4%;
+}
+.posts-index table th.post-views {
+  width: 6%;
+}
+*/
+
+.post-create .preview h2,
+.post-edit .preview h2,
+.post-view .content h2{
+  margin-bottom : 30px;
+}
+.post-create .preview h3,
+.post-edit .preview h3,
+.post-view .content h3{
+  margin: 20px 0 10px;
+}
+
+.post-create .preview,
+.post-edit .preview{
+  border: 2px dashed #3a87ad;
+  min-height: 30px;
+  padding: 10px 10px 0;
+}
+.user-index .thumbnail{
+  overflow: hidden;
+}
+.user-index .user-img{
+  float:left;
+  margin-right: 6px;
+}
+.user-index .user-info{
+  float:left;
+}
+.user-view .user-img{
+  float:left;
+  margin-right: 20px;
+}
+.user-view .user-info{
+  float:left;
+  margin-top: 0;
+}
+
+.icon-chevron-right {
+  float: right;
+  margin-top: 2px;
+  margin-right: -6px;
+  opacity: .25;
+}
+.active .icon-chevron-right {
+  opacity: 1;
+}
+
+.page-header-pills{
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0;
+}
+
+#disqus_thread{
+  margin-top: 50px;
+}
