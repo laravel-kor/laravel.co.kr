@@ -119,7 +119,7 @@ Route::post('account/edit', ['uses'=>'AccountController@postEdit']);
 Route::get('/users/{userId}/posts', 'UserController@getPostsById');
 Route::get('/users/{userId}/{username}/posts', 'UserController@getPostsById');
 Route::get('/users/{userId}/{username?}', 'UserController@getById');
-Route::get('users', ['uses'=>'UserController@index']);
+Route::get('users', ['uses'=>'UserController@getIndex']);
 
 
 // Posts
