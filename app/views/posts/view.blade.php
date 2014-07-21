@@ -32,7 +32,7 @@ $(function(){
         <li class="disabled"><a href="#" title="등록"><i class="icon-time"></i> {{ Carbon::createFromFormat('Y-m-d H:i:s', $post->created_at)->diffForHumans() }}</a></li>
       </ul>
     <div class="content">
-      {{ $markdown->transformMarkdown($post->content) }}
+      {{ $content }}
     </div>
     <ul class="nav nav-pills">
       <li class="pull-right"><a href="{{ URL::to('posts/' . $post->category) }}"><i class="icon-list"></i> 목록</a></li>
