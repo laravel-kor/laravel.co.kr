@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "42bb0f7cdae24bb9805f8b8dc7de8630",
+    "hash": "492b358e2fc981e1912fa3f5a329b084",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -86,65 +86,6 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "time": "2014-01-17 12:21:18"
-        },
-        {
-            "name": "dflydev/markdown",
-            "version": "v1.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dflydev/dflydev-markdown.git",
-                "reference": "6baed9b50f29c980795b6656d43722aadb126f7e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dflydev/dflydev-markdown/zipball/6baed9b50f29c980795b6656d43722aadb126f7e",
-                "reference": "6baed9b50f29c980795b6656d43722aadb126f7e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "dflydev\\markdown": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Dragonfly Development Inc.",
-                    "email": "info@dflydev.com",
-                    "homepage": "http://dflydev.com"
-                },
-                {
-                    "name": "Beau Simensen",
-                    "email": "beau@dflydev.com",
-                    "homepage": "http://beausimensen.com"
-                },
-                {
-                    "name": "Michel Fortin",
-                    "homepage": "http://michelf.com"
-                },
-                {
-                    "name": "John Gruber",
-                    "homepage": "http://daringfireball.net"
-                }
-            ],
-            "description": "PHP Markdown & Extra",
-            "homepage": "http://github.com/dflydev/dflydev-markdown",
-            "keywords": [
-                "markdown"
-            ],
-            "time": "2013-09-23 12:00:18"
         },
         {
             "name": "filp/whoops",
@@ -348,16 +289,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v4.2.6",
+            "version": "v4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "2e73cd58ee42919166a51897b965e1135b85048c"
+                "reference": "11c1b47b365be02beab3e5aca2306aaa08203d8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/2e73cd58ee42919166a51897b965e1135b85048c",
-                "reference": "2e73cd58ee42919166a51897b965e1135b85048c",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/11c1b47b365be02beab3e5aca2306aaa08203d8e",
+                "reference": "11c1b47b365be02beab3e5aca2306aaa08203d8e",
                 "shasum": ""
             },
             "require": {
@@ -451,9 +392,7 @@
             "authors": [
                 {
                     "name": "Taylor Otwell",
-                    "email": "taylorotwell@gmail.com",
-                    "homepage": "https://github.com/taylorotwell",
-                    "role": "Creator of Laravel"
+                    "email": "taylorotwell@gmail.com"
                 }
             ],
             "description": "The Laravel Framework.",
@@ -461,7 +400,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2014-06-29 00:16:51"
+            "time": "2014-07-22 20:25:45"
         },
         {
             "name": "monolog/monolog",
@@ -579,19 +518,20 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v0.9.4",
+            "version": "v0.9.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "1e5e280ae88a27effa2ae4aa2bd088494ed8594f"
+                "reference": "ef70767475434bdb3615b43c327e2cae17ef12eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/1e5e280ae88a27effa2ae4aa2bd088494ed8594f",
-                "reference": "1e5e280ae88a27effa2ae4aa2bd088494ed8594f",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/ef70767475434bdb3615b43c327e2cae17ef12eb",
+                "reference": "ef70767475434bdb3615b43c327e2cae17ef12eb",
                 "shasum": ""
             },
             "require": {
+                "ext-tokenizer": "*",
                 "php": ">=5.2"
             },
             "type": "library",
@@ -619,7 +559,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2013-08-25 17:11:40"
+            "time": "2014-07-23 18:24:17"
         },
         {
             "name": "patchwork/utf8",
@@ -1828,6 +1768,7 @@
     "stability-flags": [
 
     ],
+    "prefer-stable": false,
     "platform": [
 
     ],
