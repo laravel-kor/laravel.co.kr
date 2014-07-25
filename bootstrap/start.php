@@ -25,7 +25,7 @@ $app = new Illuminate\Foundation\Application;
 */
 
 $env = $app->detectEnvironment(function() {
-	return getenv("environment") ?: 'local';
+	return getenv("LARAVEL_KOREA_ENVIRONMENT") ?: 'local';
 });
 
 /*
