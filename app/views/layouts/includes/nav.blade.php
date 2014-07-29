@@ -13,6 +13,8 @@
           <li {{ (Request::is('docs*') ? 'class="active"' : '') }}><a href="{{ URL::to('docs') }}">한글 매뉴얼</a></li>
           <li {{ (Request::is('posts*') ? 'class="active"' : '') }}><a href="{{ URL::to('posts') }}">게시판</a></li>
           <li {{ (Request::is('users*') ? 'class="active"' : '') }}><a href="{{ URL::to('users') }}">사용자</a></li>
+          <li {{ (Request::is('chat*') ? 'class="active"' : '') }}><a href="{{ URL::to('chat') }}">채팅</a></li>
+
         </ul>
         <ul class="nav pull-right">
           @if ( Auth::check() )

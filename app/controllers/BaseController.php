@@ -15,4 +15,9 @@ class BaseController extends Controller {
 		}
 	}
 
+	protected function setContent($view, $params = [])
+	{
+		$this->layout->content = View::make($view, $params);
+	}
+
 }
