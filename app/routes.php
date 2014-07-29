@@ -134,6 +134,8 @@ Route::post('/posts/{postId}/edit', 'PostController@postEdit');
 Route::get('/posts/{postId}/delete', 'PostController@getDelete');
 Route::get('posts', ['uses'=>'PostController@getIndex']);
 
+Route::get('chat', ['uses'=>'PageController@getChat', 'as'=>'chat']);
+
 
 // Tags
 //Route::controller('tags', 'TagController');
