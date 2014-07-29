@@ -1,10 +1,11 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 body,
 button,
 input,
 button,
 select,
 textarea{
-  font-family : "Malgun Gothic",Gulim,"Segoe UI","Helvetica",Garuda,Arial,sans-serif !important
+  font-family : "Nanum Gothic",Gulim,"Segoe UI","Helvetica",Garuda,Arial,sans-serif !important
 }
 
 body {
