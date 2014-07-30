@@ -232,3 +232,78 @@ div.nav-collapse ul.nav {
     -webkit-border-radius: 0;
     padding: 5px
 }
+
+html pre code {
+  padding: 10px;
+}
+
+.doc-toc-wrapper {
+  background: none;
+  padding: 0;
+  border:0;
+}
+
+#doc-toc {
+
+}
+
+.nav-header {
+  font-size: 14px;
+  color: #F0523F;
+}
+
+.nav-header:before {
+  content: '';
+}
+
+.doc-item-list li:before {
+  content: "↳ ";
+  color: #cccccc;
+}
+
+.doc-item-list {
+  margin-left: 15px;
+}
+
+.doc-item-list a {
+  color: #333;
+  font-weight: normal;
+}
+
+#doc-toc {
+  background: #fafaf9;
+  padding-top: 10px;
+}
+
+.doc-item-list a:hover {
+  text-decoration: none;
+  color: #F0523F;
+}
+
+.doc-item-list {
+  margin-top: 5px;
+}
+
+.doc-item-list li.active {
+  background: #ebebeb;
+}
+
+.doc-index .section h1 {
+  color: #444444;
+  font-size: 32px;
+}
+
+.doc-index .section h2 {
+  font-size: 30px;
+  color: #444444;
+
+}
+
+.doc-item-list li {
+  list-style: none;
+  padding: 5px 5px;
+}
+
+#doc-toc li a {
+  display: inline;
+}
