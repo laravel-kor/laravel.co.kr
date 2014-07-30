@@ -1,4 +1,4 @@
-<div class="well">
+<div class="well" id='posts-nav'>
   <ul class="nav nav-list">
     <li {{ (Request::is('posts/all*') || $category == 'all' ? 'class="active"' : '') }}>
       <a href="{{ URL::to('posts/all') }}">
@@ -6,7 +6,6 @@
         전체 글
       </a>
     </li>
-    <li class="divider"></li>
     <li {{ (Request::is('posts/notice*') || $category == 'notice' ? 'class="active"' : '') }}>
       <a href="{{ URL::to('posts/notice') }}">
         <i class="icon-chevron-right"></i>
@@ -49,7 +48,6 @@
         Laravel 사이트 소개
       </a>
     </li>
-    <li class="divider"></li>
     <li {{ (Request::is('posts/jobs*') || $category == 'jobs' ? 'class="active"' : '') }}>
       <a href="{{ URL::to('posts/jobs') }}">
         <i class="icon-chevron-right"></i>

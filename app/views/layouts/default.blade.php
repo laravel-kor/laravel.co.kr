@@ -9,7 +9,7 @@
     <meta name="author" content="">
   	<meta name="robots" content="index,follow">
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
-    
+
     <!-- Le styles -->
     <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('css/tomorrow-night-eighties.css') }}" rel="stylesheet">
@@ -22,9 +22,9 @@
     @include('layouts.includes.nav')
 
     <div class="container">
-    
+
       @include('notifications')
-    
+
       @yield('content')
 
       @include('layouts.includes.footer')

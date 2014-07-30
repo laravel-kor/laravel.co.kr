@@ -1,5 +1,5 @@
 @extends('layouts.default')
- 
+
 @section('content')
 <div class="hero-unit">
   <h1>Laravel 프레임워크</h1>

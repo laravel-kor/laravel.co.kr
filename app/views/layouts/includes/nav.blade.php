@@ -6,10 +6,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="{{ URL::to('/') }}">Laravel Korea</a>
+      <a class="brand" href="{{ URL::to('/') }}"><img src='/img/logo.png' width='40'/>&nbsp;&nbsp;&nbsp;Laravel Korea</a>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li {{ (Request::is('/') ? 'class="active"' : '') }}><a href="{{ URL::to('') }}">홈</a></li>
           <li {{ (Request::is('docs*') ? 'class="active"' : '') }}><a href="{{ URL::to('docs') }}">한글 매뉴얼</a></li>
           <li {{ (Request::is('posts*') ? 'class="active"' : '') }}><a href="{{ URL::to('posts') }}">게시판</a></li>
           <li {{ (Request::is('users*') ? 'class="active"' : '') }}><a href="{{ URL::to('users') }}">사용자</a></li>

@@ -9,14 +9,14 @@
 $(function(){
 
   var converter = new Markdown.Converter();
-  
+
   $('#inputContent').on('keyup', function(){
     var text = $(this).val();
     $('#postPreview').html(converter.makeHtml(text)).find('pre code').each(function(i, e) {hljs.highlightBlock(e)});
   }).trigger('keyup');
-  
+
   $('textarea').autosize();
-  
+
 })
 </script>
 @stop
@@ -33,7 +33,7 @@ $(function(){
   <div class="span9">
     <form method="post">
       <input type="hidden" name="csrf_token" value="{{ Session::getToken() }}" />
-      
+
       <div class="control-group {{ ($errors->has('title') ? 'error' : '') }}">
         <label class="control-label" for="inputTitle">제목</label>
         <div class="controls">
@@ -41,7 +41,7 @@ $(function(){
           {{ $errors->first('title') }}
         </div>
       </div>
-      
+
       <div class="control-group {{ ($errors->has('category') ? 'error' : '') }}">
         <label class="control-label" for="inputCategory">분류</label>
           <div class="controls">
@@ -49,7 +49,7 @@ $(function(){
           </div>
           {{ $errors->first('category') }}
       </div>
-      
+
       <div class="control-group {{ ($errors->has('content') ? 'error' : '') }}">
         <label class="control-label" for="inputContent">내용</label>
         <div class="controls">
@@ -57,14 +57,14 @@ $(function(){
           {{ $errors->first('content') }}
         </div>
       </div>
-      
+
       <div class="control-group">
         <label class="control-label">미리보기</label>
         <div class="controls preview" id="postPreview">
-        {{ $markdown->transformMarkdown($post->content) }}
+        {{ $markdown->render($post->content) }}
         </div>
       </div>
-    
+
       <div class="control-group">
         <div class="controls">
           <button type="submit" class="btn">수정</button>
@@ -72,7 +72,7 @@ $(function(){
       </div>
 
     </form>
-    
+
     <ul class="nav nav-pills">
       <li class="pull-right"><a href="{{ URL::to('posts/' . $post->category) }}"><i class="icon-list"></i> 목록</a></li>
     </ul>

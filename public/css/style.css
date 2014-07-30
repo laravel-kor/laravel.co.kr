@@ -25,6 +25,11 @@ pre{
   margin-bottom: 15px;
 }
 
+a {
+    color: #333;
+}
+
+
 .label-cat-notice {
   background-color : #B43C6E;
   font-weight: normal;
@@ -82,6 +87,7 @@ pre{
 
 .brand {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #fff !important;
 }
 /*
 .posts-index table {
@@ -157,4 +163,56 @@ pre{
 
 #disqus_thread{
   margin-top: 50px;
+}
+
+.jumbotron {
+    background: #F0523F;
+    color: #fff;
+}
+
+#posts-nav {
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    background: none;
+}
+
+ul.nav-list {
+}
+
+#posts-nav ul li {
+}
+
+#posts-nav ul li a {
+    padding: 10px;
+    border-bottom: 1px solid #ebebeb;
+    color: #333;
+}
+
+#posts-nav ul li.active a {
+    background-color: #F0523F;
+    color: #fff;
+}
+
+
+#posts-nav ul li.divider {
+    padding: 0;
+}
+
+#posts-nav {
+    padding: 0;
+}
+
+h2.title {
+    color: #bcd267;
+}
+
+div.content pre {
+    background: none;
+    background-color: none;
+    border-radius: none;
+    border: none;
+}
+
+.post-title > a:hover {
+    text-decoration: underline;
 }
