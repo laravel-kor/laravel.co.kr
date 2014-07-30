@@ -101,9 +101,6 @@
           </div>
         </div>
         <div class="span9 section">
-          <p class="well">
-            문법오류나 오역, 오타를 <a href="https://github.com/thisiskaden/laravel4-docs-korean/issues">이슈</a>에 남겨주시거나 해당 페이지에 코멘트를 달아주시면 확인 후 업데이트 하겠습니다.
-          </p>
           @yield('content')
         </div>
       </div>
