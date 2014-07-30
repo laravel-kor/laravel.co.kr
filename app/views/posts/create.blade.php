@@ -34,12 +34,12 @@ $(function(){
 
 @section('content')
 <div class="page-header">
-  @include('posts.includes.header')
+  @include('posts.includes.header', ['category'=>$category])
 </div>
 
 <div class="row post-create">
   <div class="span3">
-  @include('posts.includes.sidenav')
+  @include('posts.includes.sidenav', ['category'=>$category])
   </div>
   <div class="span9">
     <form method="post">
@@ -72,7 +72,7 @@ $(function(){
       <div class="control-group">
         <label class="control-label">미리보기</label>
         <div class="controls preview" id="postPreview">
-        {{ $markdown->transformMarkdown(Input::old('content')) }}
+        {{ $markdown->render(Input::old('content')) }}
         </div>
       </div>
 

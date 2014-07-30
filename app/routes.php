@@ -11,95 +11,94 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+use Ciconia\Ciconia;
+use Ciconia\Extension\Gfm;
+App::singleton('MarkdownParser', function() {
 
+    $markdown = new Ciconia();
+    $markdown->addExtension(new Gfm\FencedCodeBlockExtension());
+    $markdown->addExtension(new Gfm\TaskListExtension());
+    $markdown->addExtension(new Gfm\InlineStyleExtension());
+    $markdown->addExtension(new Gfm\WhiteSpaceExtension());
+    $markdown->addExtension(new Gfm\TableExtension());
+    $markdown->addExtension(new Gfm\UrlAutoLinkExtension());
 
-// Home
-Route::get('/', function(){
-  $posts = Post::orderBy('id', 'desc')->take(15)->get();
-
-  return View::make('home')->with(array(
-    'posts' => $posts,
-    'categories' => Config::get('site.postCategories')
-  ));
+    return $markdown;
 
 });
 
-Route::get('/help', function(){
-  return 'help';
+View::share('categories', Config::get('site.postCategories'));
+
+Route::get('/', function() {
+    return View::make('home')->with([
+        'posts'      => Post::orderBy('id', 'desc')->take(15)->get(),
+        'categories' => Config::get('site.postCategories')
+    ]);
 });
 
-Route::get('/about', function($bbb){
-  return 'yes';
+Route::get('/docs', function() {
+    return Redirect::to('docs/introduction');
 });
 
-Route::get('/docs', function(){
-  return Redirect::to('docs/introduction');
-});
+Route::get('/docs/{page}', function($page) {
+    $path = __DIR__ . '/../app/views/docs/ko/' . $page . '.md';
 
-Route::get('/docs/{page}', function($page){
-  $path = __DIR__ . '/../app/views/docs/ko/' . $page . '.md';
+    if(File::exists($path)) {
+        $file = File::get($path);
+    }else{
+        return 'clone the repository first!';
+    }
 
-  if(File::exists($path))
-  {
-    $file = File::get($path);
-  }else{
-    return 'clone the repository first!';
-  }
-
-  $markdown = new MarkdownExtraParser();
-  return View::make('docs.index')->with(array(
-    'content' => ($markdown->transformMarkdown($file)),
-    'page' => $page
-  ));
+    $markdown = new MarkdownExtraParser();
+    return View::make('docs.index')->with([
+        'content' => ($markdown->transformMarkdown($file)),
+        'page'    => $page
+    ]);
 });
 
 Route::get('/search', function(){
-  $query = Input::get('query');
 
-  if($query)
-  {
-    return Redirect::to('/search/' . Input::get('query'));
-  }
+    $query = Input::get('query');
 
-  return View::make('search')->with(array(
-    'posts' => false,
-    'query' => false
-  ));
+    if($query) {
+        return Redirect::to('/search/' . Input::get('query'));
+    }
+
+    return View::make('search')->with([
+        'posts' => false,
+        'query' => false
+    ]);
 });
 
-Route::get('/search/{query?}', function($query){
+Route::get('/search/{query?}', function($query) {
 
-  $query = trim($query);
+    $query = trim($query);
 
-  if($query)
-  {
-    $posts = Post::with('user')
-      ->where('title', 'like', '%' . $query . '%')
-      ->orWhere('content', 'like', '%' . $query . '%')
-      ->orderBy('id', 'desc')
-      ->paginate(15);
-  }
-  else
-  {
-    $posts = false;
-  }
+    if($query) {
+        $posts = Post::with('user')
+            ->where('title', 'like', '%' . $query . '%')
+            ->orWhere('content', 'like', '%' . $query . '%')
+            ->orderBy('id', 'desc')
+            ->paginate(15);
+    } else {
+        $posts = false;
+    }
 
-  return View::make('search')->with(array(
-    'posts' => $posts,
-    'categories' => Config::get('site.postCategories'),
-    'query' => $query
-  ));
+    return View::make('search')->with([
+        'posts'      => $posts,
+        'categories' => Config::get('site.postCategories'),
+        'query'      => $query
+    ]);
+
 });
 
 Route::get('/changelog', function(){
+    $path = __DIR__ . '/../changelog.md';
+    $markdown = new MarkdownParser();
 
-  $path = __DIR__ . '/../changelog.md';
-
-  $markdown = new MarkdownParser();
-
-  return View::make('changelog')->with(array(
-    'content' => ($markdown->transformMarkdown(File::get($path)))
-  ));
+    return View::make('changelog')->with([
+        'content' => ($markdown->transformMarkdown(File::get($path)))
+    ]);
 });
 
 
@@ -126,13 +125,13 @@ Route::get('users', ['uses'=>'UserController@getIndex']);
 #Route::get('/posts/new', 'PostController@getCreate');
 #Route::post('/posts/new', 'PostController@postCreate');
 Route::get('/posts/{category}', 'PostController@getByCategory')->where('category', '[a-zA-Z]+');
-Route::get('/posts/{category}/new', 'PostController@getCreate')->where('category', '[a-zA-Z]+');
-Route::post('/posts/{category}/new', 'PostController@postCreate')->where('category', '[a-zA-Z]+');
+Route::get('/posts/{category}/new', ['uses'=>'PostController@getCreate', 'before'=>'auth'])->where('category', '[a-zA-Z]+');
+Route::post('/posts/{category}/new', ['uses'=>'PostController@postCreate', 'before'=>'csrf'])->where('category', '[a-zA-Z]+');
 Route::get('/posts/{postId}', 'PostController@getById')->where('category', '[0-9]+');
-Route::get('/posts/{postId}/edit', 'PostController@getEdit');
-Route::post('/posts/{postId}/edit', 'PostController@postEdit');
-Route::get('/posts/{postId}/delete', 'PostController@getDelete');
-Route::get('posts', ['uses'=>'PostController@getIndex']);
+Route::get('/posts/{postId}/edit', ['uses'=>'PostController@getEdit', 'before'=>'auth']);
+Route::post('/posts/{postId}/edit', ['uses'=>'PostController@postEdit', 'before'=>'csrf']);
+Route::get('/posts/{postId}/delete', ['uses'=>'PostController@getDelete', 'before'=>'auth']);
+Route::get('posts', ['uses'=>'PostController@getByCategory']);
 
 Route::get('chat', ['uses'=>'PageController@getChat', 'as'=>'chat']);
 

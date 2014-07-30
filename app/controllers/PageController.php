@@ -13,5 +13,4 @@ class PageController extends BaseController
     {
     	$this->setContent('pages/chat');
     }
-
 }

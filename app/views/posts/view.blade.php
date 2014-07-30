@@ -13,12 +13,12 @@ $(function(){
 
 @section('content')
 <div class="page-header">
-  @include('posts.includes.header')
+  @include('posts.includes.header', ['category'=>$category])
 </div>
 
 <div class="row post-view">
   <div class="span3">
-  @include('posts.includes.sidenav')
+  @include('posts.includes.sidenav', ['category'=>$category])
   </div>
   <div class="span9">
     <h2 class="title">{{ $post->title }}</h2>
@@ -44,7 +44,7 @@ $(function(){
         /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
         var disqus_shortname = '{{ Config::get('site.disqusShortname') }}';
         var disqus_identifier = '{{ $post->id }}';
-        var disqus_title = "{{ $header . ' – ' . $post->title }}";
+        var disqus_title = "{{ $categories[$category] . ' – ' . $post->title }}";
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
