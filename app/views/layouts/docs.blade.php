@@ -48,10 +48,10 @@
                     <li {{ Request::is('docs/configuration') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/configuration') }}"><i class=" pull-right"></i>설정(configuration)</a></li>
                     <li {{ Request::is('docs/lifecycle') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/lifecycle') }}"><i class=" pull-right"></i>요청 사이클<br/> &nbsp;&nbsp;&nbsp;(Request Lifecycle)</a></li>
                     <li {{ Request::is('docs/routing') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/routing') }}"><i class=" pull-right"></i>라우팅(Routing)</a></li>
-                    <li {{ Request::is('docs/requests') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/requests') }}"><i class=" pull-right"></i>요청 &amp; 입력<br/>&nbsp;&nbsp;&nbsp;(Requests &amp; Input)</a></li>
-                    <li {{ Request::is('docs/responses') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/responses') }}"><i class=" pull-right"></i>뷰 &amp; 응답<br/>&nbsp;&nbsp;&nbsp;(Views &amp; Responses)</a></li>
+                    <li {{ Request::is('docs/requests') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/requests') }}"><i class=" pull-right"></i>요청 &amp; 입력<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Requests &amp; Input)</a></li>
+                    <li {{ Request::is('docs/responses') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/responses') }}"><i class=" pull-right"></i>뷰 &amp; 응답<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Views &amp; Responses)</a></li>
                     <li {{ Request::is('docs/controllers') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/controllers') }}"><i class=" pull-right"></i>컨트롤러(Controllers)</a></li>
-                    <li {{ Request::is('docs/errors') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/errors') }}"><i class=" pull-right"></i>에러 &amp; 로그<br/>&nbsp;&nbsp;&nbsp;(Errors &amp; Logging)</a></li>
+                    <li {{ Request::is('docs/errors') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/errors') }}"><i class=" pull-right"></i>에러 &amp; 로그<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Errors &amp; Logging)</a></li>
                 </ul>
               </li>
 
@@ -66,7 +66,7 @@
                   <li {{ Request::is('docs/ioc') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/ioc') }}"><i class=" pull-right"></i>IoC 컨테이너(IoC Container)</a></li>
                   <li {{ Request::is('docs/localization') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/localization') }}"><i class=" pull-right"></i>지역화(Localization)</a></li>
                   <li {{ Request::is('docs/mail') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/mail') }}"><i class=" pull-right"></i>메일(Mail)</a></li>
-                  <li {{ Request::is('docs/packages') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/packages') }}"><i class=" pull-right"></i>패키지 개발<br/>&nbsp;&nbsp;&nbsp;(Package Development)</a></li>
+                  <li {{ Request::is('docs/packages') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/packages') }}"><i class=" pull-right"></i>패키지 개발<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Package Development)</a></li>
                   <li {{ Request::is('docs/pagination') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/pagination') }}"><i class=" pull-right"></i>페이지네이션(Pagination)</a></li>
                   <li {{ Request::is('docs/queues') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/queues') }}"><i class=" pull-right"></i>큐(Queues)</a></li>
                   <li {{ Request::is('docs/security') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/security') }}"><i class=" pull-right"></i>보안(Security)</a></li>
@@ -82,9 +82,9 @@
                 <ul class='doc-item-list'>
                   <li {{ Request::is('docs/database') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/database') }}"><i class=" pull-right"></i>기본적인 사용법(Basic Usage)</a></li>
                   <li {{ Request::is('docs/queries') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/queries') }}"><i class=" pull-right"></i>쿼리 빌더(Query Builder)</a></li>
-                  <li {{ Request::is('docs/eloquent') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/eloquent') }}"><i class=" pull-right"></i>엘로퀀트 ORM<br/>&nbsp;&nbsp;&nbsp;(Eloquent ORM)</a></li>
+                  <li {{ Request::is('docs/eloquent') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/eloquent') }}"><i class=" pull-right"></i>엘로퀀트 ORM<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Eloquent ORM)</a></li>
                   <li {{ Request::is('docs/schema') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/schema') }}"><i class=" pull-right"></i>스키마 빌더(Schema Builder)</a></li>
-                  <li {{ Request::is('docs/migrations') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/migrations') }}"><i class=" pull-right"></i>마이그레이션 &amp; 씨딩<br/>&nbsp;&nbsp;&nbsp;(Migrations &amp; Seeding)</a></li>
+                  <li {{ Request::is('docs/migrations') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/migrations') }}"><i class=" pull-right"></i>마이그레이션 &amp; 씨딩<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(Migrations &amp; Seeding)</a></li>
                   <li {{ Request::is('docs/redis') ? 'class="active"' : '' }}><a href="{{ URL::to('docs/redis') }}"><i class=" pull-right"></i>레디스(Redis)</a></li>
                 </ul>
               </li>

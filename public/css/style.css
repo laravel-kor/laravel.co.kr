@@ -258,11 +258,12 @@ html pre code {
 
 .doc-item-list li:before {
   content: "↳ ";
+  margin-left:10px;
   color: #cccccc;
 }
 
 .doc-item-list {
-  margin-left: 15px;
+  margin-left: 0;
 }
 
 .doc-item-list a {
@@ -271,8 +272,12 @@ html pre code {
 }
 
 #doc-toc {
-  background: #fafaf9;
+  /*background: #fafaf9;*/
   padding-top: 10px;
+}
+
+#doc-toc li.active {
+  text-shadow: none;
 }
 
 .doc-item-list a:hover {
@@ -285,7 +290,11 @@ html pre code {
 }
 
 .doc-item-list li.active {
-  background: #ebebeb;
+  background: #0088cc;
+}
+
+.doc-item-list li.active a {
+  color: #fff;
 }
 
 .doc-index .section h1 {
