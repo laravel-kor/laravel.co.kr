@@ -32,10 +32,12 @@
         @endforeach
       </tbody>
     </table>
+    <div class="pull-right">
+    {{ $posts->links() }}
+    </div>
     <ul class="nav nav-pills">
       <li class="pull-right"><a href="{{ URL::to('posts/' . $category . '/new') }}"><i class="icon-pencil"></i> 글쓰기</a></li>
     </ul>
-    {{ $posts->links() }}
   </div>
 </div>
 

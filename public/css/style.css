@@ -213,6 +213,15 @@ div.content pre {
     border: none;
 }
 
-.post-title > a:hover {
-    text-decoration: underline;
+.navbar-form input {
+    margin-top: 9px;
+}
+
+.page-header h1 {
+    color: #4b4b4b;
+    font-size: 29px;
+}
+
+div.nav-collapse ul.nav {
+    margin-top: 3px;
 }
