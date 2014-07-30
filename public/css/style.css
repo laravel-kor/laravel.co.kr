@@ -241,6 +241,7 @@ html pre code {
   background: none;
   padding: 0;
   border:0;
+  box-shadow: none;
 }
 
 #doc-toc {
