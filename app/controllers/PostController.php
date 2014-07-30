@@ -2,22 +2,7 @@
 
 class PostController extends BaseController
 {
-
-    /**
-    * Create a post
-    */
-    public function getCreate($category)
-    {
-        return View::make('posts.create')->with([
-          'category' => $category,
-          'markdown' => App::make('MarkdownParser')
-        ]);
-    }
-
-    /**
-    * Create a post
-    */
-    public function postCreate($category)
+    protected function validate()
     {
         $rules = [
             'title'     => 'required',
@@ -26,75 +11,30 @@ class PostController extends BaseController
         ];
 
         $validator = Validator::make(Input::all(), $rules);
-
-        if ($validator->passes()) {
-            $post           = new Post;
-            $post->title    = Input::get('title');
-            $post->content  = Input::get('content');
-            $post->category = Input::get('category');
-
-            Auth::user()->posts()->save($post);
-
-            return Redirect::to('posts/' . $post->id)->with('success', '글이 등록 되었습니다.');
-        }
-
-        return Redirect::to('posts/' . $category . '/' . 'new')
-                ->withInput(Input::all())
-                ->withErrors($validator)
-                ->with('category', $category);
+        return $validator;
     }
 
     /**
-    * Display posts by category
+    * Create a post
     */
-    public function getByCategory($category = 'all')
+    public function postCreate($category)
     {
-        if($category == 'all') {
-            $posts = Post::with('user')->orderBy('id', 'desc')->paginate(15);
-        } else {
-            $posts = Post::with('user')->where('category', $category)->orderBy('id', 'desc')->paginate(15);
+
+        if (!$validator = $this->getValidate()) {
+            return Redirect::to('posts/' . $category . '/' . 'new')
+                    ->withInput(Input::all())
+                    ->withErrors($validator)
+                    ->with('category', $category);
         }
 
-        return View::make('posts.index')->with([
-            'posts'    => $posts,
-            'category' => $category
-        ]);
-    }
+        $post           = new Post;
+        $post->title    = Input::get('title');
+        $post->content  = Input::get('content');
+        $post->category = Input::get('category');
 
-    /**
-    * Display a post
-    */
-    public function getById($postId)
-    {
-        $post = Post::find($postId);
-        $post->views++;
-        $post->save();
+        Auth::user()->posts()->save($post);
 
-        return View::make('posts.view')->with([
-            'post' => $post,
-            'content' => App::make('MarkdownParser')->render($post->content),
-            'category'=>$post->category
-        ]);
-    }
-
-    /**
-    * Edit a post
-    */
-    public function getEdit($postId)
-    {
-        $post = Post::find($postId);
-
-        if(Auth::check() && $post->user_id == Auth::user()->id) {
-
-          return View::make('posts.edit')->with([
-            'post'     => $post,
-            'header'   => $this->categories[$post->category],
-            'markdown' => App::make('MarkdownParser'),
-            'category' => $post->category
-          ]);
-        }
-
-        return Redirect::to('posts/' . $postId);
+        return Redirect::to('posts/' . $post->id)->with('success', '글이 등록 되었습니다.');
     }
 
     /**
@@ -135,6 +75,68 @@ class PostController extends BaseController
             $post->delete();
 
             return Redirect::to('posts/' . $category)->with('success', '글이 삭제 되었습니다.');
+        }
+
+        return Redirect::to('posts/' . $postId);
+    }
+
+  /**
+    * Create a post
+    */
+    public function getCreate($category)
+    {
+        return View::make('posts.create')->with([
+          'category' => $category,
+          'markdown' => App::make('Ciconia\Ciconia')
+        ]);
+    }
+
+    /**
+    * Display posts by category
+    */
+    public function getByCategory($category = 'all')
+    {
+        if($category == 'all') {
+            $posts = Post::with('user')->orderBy('id', 'desc')->paginate(15);
+        } else {
+            $posts = Post::with('user')->where('category', $category)->orderBy('id', 'desc')->paginate(15);
+        }
+
+        return View::make('posts.index')->with([
+            'posts'    => $posts,
+            'category' => $category
+        ]);
+    }
+
+    /**
+    * Display a post
+    */
+    public function getById($postId)
+    {
+        $post = Post::find($postId);
+        $post->views++;
+        $post->save();
+
+        return View::make('posts.view')->with([
+            'post' => $post,
+            'content' => App::make('Ciconia\Ciconia')->render($post->content),
+            'category'=>$post->category
+        ]);
+    }
+
+    /**
+    * Edit a post
+    */
+    public function getEdit($postId)
+    {
+        $post = Post::find($postId);
+
+        if(Auth::check() && $post->user_id == Auth::user()->id) {
+          return View::make('posts.edit')->with([
+            'post'     => $post,
+            'markdown' => App::make('Ciconia\Ciconia'),
+            'category' => $post->category
+          ]);
         }
 
         return Redirect::to('posts/' . $postId);

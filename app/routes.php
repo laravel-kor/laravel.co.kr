@@ -1,5 +1,6 @@
 <?php
 
+require_once 'bindings.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -11,21 +12,6 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-use Ciconia\Ciconia;
-use Ciconia\Extension\Gfm;
-App::singleton('MarkdownParser', function() {
-
-    $markdown = new Ciconia();
-    $markdown->addExtension(new Gfm\FencedCodeBlockExtension());
-    $markdown->addExtension(new Gfm\TaskListExtension());
-    $markdown->addExtension(new Gfm\InlineStyleExtension());
-    $markdown->addExtension(new Gfm\WhiteSpaceExtension());
-    $markdown->addExtension(new Gfm\TableExtension());
-    $markdown->addExtension(new Gfm\UrlAutoLinkExtension());
-
-    return $markdown;
-
-});
 
 View::share('categories', Config::get('site.postCategories'));
 
@@ -36,11 +22,11 @@ Route::get('/', function() {
     ]);
 });
 
-Route::get('/docs', function() {
+Route::get('docs', function() {
     return Redirect::to('docs/introduction');
 });
 
-Route::get('/docs/{page}', function($page) {
+Route::get('docs/{page}', function($page) {
     $path = __DIR__ . '/../app/views/docs/ko/' . $page . '.md';
 
     if(File::exists($path)) {
@@ -50,13 +36,16 @@ Route::get('/docs/{page}', function($page) {
     }
 
     $markdown = new MarkdownExtraParser();
+
+
+
     return View::make('docs.index')->with([
         'content' => ($markdown->transformMarkdown($file)),
         'page'    => $page
     ]);
 });
 
-Route::get('/search', function(){
+Route::get('search', function(){
 
     $query = Input::get('query');
 
@@ -70,7 +59,7 @@ Route::get('/search', function(){
     ]);
 });
 
-Route::get('/search/{query?}', function($query) {
+Route::get('search/{query?}', function($query) {
 
     $query = trim($query);
 
@@ -92,7 +81,7 @@ Route::get('/search/{query?}', function($query) {
 
 });
 
-Route::get('/changelog', function(){
+Route::get('changelog', function(){
     $path = __DIR__ . '/../changelog.md';
     $markdown = new MarkdownParser();
 
@@ -102,37 +91,32 @@ Route::get('/changelog', function(){
 });
 
 
-
-
 // Account
-Route::get('/login', 'AccountController@getLogin');
-Route::post('/login', 'AccountController@postLogin');
-Route::get('/register', 'AccountController@getRegister');
-Route::post('/register', 'AccountController@postRegister');
-Route::get('/logout', 'AccountController@getLogout');
+Route::get('login', 'AccountController@getLogin');
+Route::post('login', 'AccountController@postLogin');
+Route::get('register', 'AccountController@getRegister');
+Route::post('register', 'AccountController@postRegister');
+Route::get('logout', 'AccountController@getLogout');
 Route::get('account/edit', ['uses'=>'AccountController@getEdit']);
 Route::post('account/edit', ['uses'=>'AccountController@postEdit']);
 
-
 // Users
-Route::get('/users/{userId}/posts', 'UserController@getPostsById');
-Route::get('/users/{userId}/{username}/posts', 'UserController@getPostsById');
-Route::get('/users/{userId}/{username?}', 'UserController@getById');
+Route::get('users/{userId}/posts', 'UserController@getPostsById');
+Route::get('users/{userId}/{username}/posts', 'UserController@getPostsById');
+Route::get('users/{userId}/{username?}', 'UserController@getById');
 Route::get('users', ['uses'=>'UserController@getIndex']);
 
-
 // Posts
-#Route::get('/posts/new', 'PostController@getCreate');
-#Route::post('/posts/new', 'PostController@postCreate');
-Route::get('/posts/{category}', 'PostController@getByCategory')->where('category', '[a-zA-Z]+');
-Route::get('/posts/{category}/new', ['uses'=>'PostController@getCreate', 'before'=>'auth'])->where('category', '[a-zA-Z]+');
-Route::post('/posts/{category}/new', ['uses'=>'PostController@postCreate', 'before'=>'csrf'])->where('category', '[a-zA-Z]+');
-Route::get('/posts/{postId}', 'PostController@getById')->where('category', '[0-9]+');
-Route::get('/posts/{postId}/edit', ['uses'=>'PostController@getEdit', 'before'=>'auth']);
-Route::post('/posts/{postId}/edit', ['uses'=>'PostController@postEdit', 'before'=>'csrf']);
-Route::get('/posts/{postId}/delete', ['uses'=>'PostController@getDelete', 'before'=>'auth']);
+Route::get('posts/{category}', 'PostController@getByCategory')->where('category', '[a-zA-Z]+');
+Route::get('posts/{category}/new', ['uses'=>'PostController@getCreate', 'before'=>'auth'])->where('category', '[a-zA-Z]+');
+Route::get('posts/{postId}', 'PostController@getById')->where('category', '[0-9]+');
+Route::get('posts/{postId}/edit', ['uses'=>'PostController@getEdit', 'before'=>'auth']);
 Route::get('posts', ['uses'=>'PostController@getByCategory']);
+Route::post('posts/{category}/new', ['uses'=>'PostController@postCreate', 'before'=>'csrf'])->where('category', '[a-zA-Z]+');
+Route::post('posts/{postId}/edit', ['uses'=>'PostController@postEdit', 'before'=>'csrf']);
+Route::get('posts/{postId}/delete', ['uses'=>'PostController@getDelete', 'before'=>'auth']);
 
+// Static Pages
 Route::get('chat', ['uses'=>'PageController@getChat', 'as'=>'chat']);
 
 
