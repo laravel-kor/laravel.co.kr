@@ -2,7 +2,7 @@
 
 class PostController extends BaseController
 {
-    protected function validate()
+    protected function getValidator()
     {
         $rules = [
             'title'     => 'required',
@@ -19,8 +19,8 @@ class PostController extends BaseController
     */
     public function postCreate($category)
     {
-
-        if (!$validator = $this->getValidate()) {
+        $validator = $this->getValidator();
+        if (!$validator->passes()) {
             return Redirect::to('posts/' . $category . '/' . 'new')
                     ->withInput(Input::all())
                     ->withErrors($validator)
@@ -42,25 +42,20 @@ class PostController extends BaseController
     */
     public function postEdit($postId)
     {
-        $rules = [
-          'title'    => 'required',
-          'content'  => 'required',
-          'category' => 'required'
-        ];
-
-        $validator = Validator::make(Input::all(), $rules);
-
-        if ($validator->passes()) {
-            $post           = Post::find($postId);
-            $post->title    = Input::get('title');
-            $post->content  = Input::get('content');
-            $post->category = Input::get('category');
-            $post->save();
-
-            return Redirect::to('posts/' . $post->id)->with('success', '글이 수정 되었습니다.');
+        $validator = $this->getValidator();
+        if (!$validator->passes()) {
+            return Redirect::to('posts/' . $postId . '/edit')
+                ->withInput(Input::all())
+                ->withErrors($validator);
         }
 
-        return Redirect::to('posts/' . $postId . '/edit')->withInput(Input::all())->withErrors($validator);
+        $post           = Post::find($postId);
+        $post->title    = Input::get('title');
+        $post->content  = Input::get('content');
+        $post->category = Input::get('category');
+        $post->save();
+
+        return Redirect::to('posts/' . $post->id)->with('success', '글이 수정 되었습니다.');
     }
 
     /**
