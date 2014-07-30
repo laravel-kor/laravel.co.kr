@@ -5,7 +5,8 @@ input,
 button,
 select,
 textarea{
-  font-family : "Nanum Gothic",Gulim,"Segoe UI","Helvetica",Garuda,Arial,sans-serif !important
+  font-family : "Nanum Gothic",Gulim,"Segoe UI","Helvetica",Garuda,Arial,sans-serif !important;
+  font-size: 13px;
 }
 
 body {
@@ -224,4 +225,10 @@ div.content pre {
 
 div.nav-collapse ul.nav {
     margin-top: 3px;
+}
+
+.post-title label {
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    padding: 5px
 }
