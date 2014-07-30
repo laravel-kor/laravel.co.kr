@@ -135,7 +135,7 @@ return array(
 
 	'aliases' => array(
 
-			'App'               => 'Illuminate\Support\Facades\App',
+		'App'               => 'Illuminate\Support\Facades\App',
 		'Artisan'           => 'Illuminate\Support\Facades\Artisan',
 		'Auth'              => 'Illuminate\Support\Facades\Auth',
 		'Blade'             => 'Illuminate\Support\Facades\Blade',
@@ -173,9 +173,10 @@ return array(
 		'URL'               => 'Illuminate\Support\Facades\URL',
 		'Validator'         => 'Illuminate\Support\Facades\Validator',
 		'View'              => 'Illuminate\Support\Facades\View',
-		'Carbon' => 'Carbon\Carbon',
-        'MarkdownParser'  => 'dflydev\markdown\MarkdownParser',
-        'MarkdownExtraParser'  => 'dflydev\markdown\MarkdownExtraParser',
+
+		'Carbon'              => 'LaravelKorea\Carbon',
+		'MarkdownParser'      => 'dflydev\markdown\MarkdownParser',
+		'MarkdownExtraParser' => 'dflydev\markdown\MarkdownExtraParser',
 
 	),
 
