@@ -28,7 +28,7 @@ Route::get('docs', function() {
 
 Route::get('docs/{page}', function($page) {
 
-    $path = base_path() . "/../shared/docs/{$page}.md";
+    $path = base_path() . "/../../shared/docs/{$page}.md";
 
     if(File::exists($path)) {
         $file = File::get($path);
