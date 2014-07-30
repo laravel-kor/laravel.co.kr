@@ -1,4 +1,4 @@
-# laravel-korea.org
+# laravel.co.kr
 
 [laravel.co.kr](http://laravel.co.kr) 사이트 소스입니다.
 
