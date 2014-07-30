@@ -35,12 +35,11 @@ Route::get('docs/{page}', function($page) {
         return 'clone the repository first!';
     }
 
-    $markdown = new MarkdownExtraParser();
-
+    $markdown = App::make('Ciconia\Ciconia');
 
 
     return View::make('docs.index')->with([
-        'content' => ($markdown->transformMarkdown($file)),
+        'content' => ($markdown->render($file)),
         'page'    => $page
     ]);
 });
