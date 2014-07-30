@@ -58,6 +58,3 @@
     </li>
   </ul>
 </div>
-@if (Request::is('posts/*/new') || Request::is('posts/*/edit'))
-  @include('posts.includes.markdownReference')
-@endif
