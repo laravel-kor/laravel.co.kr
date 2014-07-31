@@ -316,4 +316,5 @@ html pre code {
 
 #doc-toc li a {
   display: inline;
+  font-size: 13px;
 }
