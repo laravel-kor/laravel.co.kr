@@ -10,7 +10,56 @@
       <div class="nav-collapse collapse">
         <ul class="nav">
           <li {{ (Request::is('docs*') ? 'class="active"' : '') }}><a href="{{ URL::to('docs') }}">한글 매뉴얼</a></li>
-          <li {{ (Request::is('posts*') ? 'class="active"' : '') }}><a href="{{ URL::to('posts') }}">게시판</a></li>
+          <li class='dropdown {{ (Request::is('posts*') ? "active" : '') }}'>
+            <a href="{{ URL::to('posts') }}" class='dropdown-toggle' data-toggle='dropdown'>게시판</a>
+            <ul class='dropdown-menu' role='menu'>
+               <li {{ (Request::is('posts/all*') || $category == 'all' ? 'class="active"' : '') }}>
+                  <a href="{{ URL::to('posts/all') }}">
+                    전체 글
+                  </a>
+                </li>
+                <li {{ (Request::is('posts/notice*') || $category == 'notice' ? 'class="active"' : '') }}>
+                  <a href="{{ URL::to('posts/notice') }}">
+                    공지사항
+                  </a>
+                </li>
+                <li {{ (Request::is('posts/free*') || $category == 'free' ? 'class="active"' : '') }}>
+                  <a href="{{ URL::to('posts/free') }}">
+                    자유게시판
+                  </a>
+                </li>
+                <li {{ (Request::is('posts/tuts*') || $category == 'Ltuts' ? 'class="active"' : '') }}>
+                  <a href="{{ URL::to('posts/tuts') }}">
+                    Laravel 강좌게시판
+                  </a>
+                </li>
+                <li {{ (Request::is('posts/tips*') || $category == 'tips' ? 'class="active"' : '') }}>
+                  <a href="{{ URL::to('posts/tips') }}">
+                    Laravel 팁게시판
+                  </a>
+                </li>
+                <li {{ (Request::is('posts/help*') || $category == 'help' ? 'class="active"' : '') }}>
+                  <a href="{{ URL::to('posts/help') }}">
+                    Laravel 질문게시판
+                  </a>
+                </li>
+                <li {{ (Request::is('posts/packages') || $category == 'packages' ? 'class="active"' : '') }}>
+                  <a href="{{ URL::to('posts/packages') }}">
+                    Laravel 패키지
+                  </a>
+                </li>
+                <li {{ (Request::is('posts/sites*') || $category == 'sites 소개' ? 'class="active"' : '') }}>
+                  <a href="{{ URL::to('posts/sites') }}">
+                    Laravel 사이트 소개
+                  </a>
+                </li>
+                <li {{ (Request::is('posts/jobs*') || $category == 'jobs' ? 'class="active"' : '') }}>
+                  <a href="{{ URL::to('posts/jobs') }}">
+                    구인구직
+                  </a>
+                </li>
+            </ul>
+          </li>
           <li {{ (Request::is('users*') ? 'class="active"' : '') }}><a href="{{ URL::to('users') }}">사용자</a></li>
           <li {{ (Request::is('chat*') ? 'class="active"' : '') }}><a href="{{ URL::to('chat') }}">채팅</a></li>
 
