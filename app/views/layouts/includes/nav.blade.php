@@ -12,7 +12,7 @@
         <ul class="nav">
           <li {{ (Request::is('docs*') ? 'class="active"' : '') }}><a href="{{ URL::to('docs') }}">한글 매뉴얼</a></li>
           <li class='dropdown {{ (Request::is('posts*') ? "active" : '') }}'>
-            <a href="{{ URL::to('posts') }}" class='dropdown-toggle' data-toggle='dropdown'>게시판</a>
+            <a href="{{ URL::to('posts') }}" class='dropdown'>게시판</a>
             <ul class='dropdown-menu' role='menu'>
 
                <li {{ (Request::is('posts/all*') || $category == 'all' ? 'class="active"' : '') }}>

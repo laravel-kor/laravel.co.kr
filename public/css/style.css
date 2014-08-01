@@ -318,3 +318,8 @@ html pre code {
   display: inline;
   font-size: 13px;
 }
+
+/*.dropdown:hover .dropdown-menu {
+  display: block;
+}
+*/
