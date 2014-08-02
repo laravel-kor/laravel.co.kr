@@ -5,3 +5,4 @@ composer.phar
 .c9revisions
 .htaccess
 error_log
+.env.*.php
