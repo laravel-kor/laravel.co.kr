@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "492b358e2fc981e1912fa3f5a329b084",
+    "hash": "9d9f5cbe517421f703abe1d21eaeaa35",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -711,16 +711,16 @@
         },
         {
             "name": "predis/predis",
-            "version": "v0.8.6",
+            "version": "v0.8.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nrk/predis.git",
-                "reference": "239864d9a0929f29bf8c5a8370ef743537c4953d"
+                "reference": "4123fcd85d61354c6c9900db76c9597dbd129bf6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nrk/predis/zipball/239864d9a0929f29bf8c5a8370ef743537c4953d",
-                "reference": "239864d9a0929f29bf8c5a8370ef743537c4953d",
+                "url": "https://api.github.com/repos/nrk/predis/zipball/4123fcd85d61354c6c9900db76c9597dbd129bf6",
+                "reference": "4123fcd85d61354c6c9900db76c9597dbd129bf6",
                 "shasum": ""
             },
             "require": {
@@ -757,7 +757,7 @@
                 "predis",
                 "redis"
             ],
-            "time": "2014-07-15 09:54:33"
+            "time": "2014-08-01 09:43:10"
         },
         {
             "name": "psr/log",
@@ -1758,21 +1758,11 @@
             "time": "2014-07-15 14:22:44"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": [],
     "prefer-stable": false,
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "platform": [],
+    "platform-dev": []
 }
