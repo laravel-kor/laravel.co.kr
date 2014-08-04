@@ -12,41 +12,31 @@ require_once 'bindings.php';
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
-View::share('categories', Config::get('site.postCategories'));
-
 Route::get('/', function() {
     return View::make('home')->with([
-        'posts'      => Post::orderBy('id', 'desc')->take(15)->get(),
-        'categories' => Config::get('site.postCategories')
+        'posts'      => Post::orderBy('id', 'desc')->take(15)->get()
     ]);
 });
 
-Route::get('docs', function() {
-    return Redirect::to('docs/introduction');
-});
+Route::get('docs/{page?}', function($page = 'introduction') {
+    $cacheKey = "{$page}.md-cache";
 
-Route::get('docs/{page}', function($page) {
+    if (!Cache::get($cacheKey)) {
+        if (!$file = File::get(base_path() . "/../../shared/docs/{$page}.md")) {
+            App::abort(404, "Unable to find {$page}.md");
+        }
 
-    $path = base_path() . "/../../shared/docs/{$page}.md";
-
-    if(File::exists($path)) {
-        $file = File::get($path);
-    }else{
-        return 'clone the repository first!';
+        $markdown = App::make('Ciconia\Ciconia');
+        Cache::put($cacheKey, $markdown->render($file), Carbon::now()->addMinutes(10));
     }
 
-    $markdown = App::make('Ciconia\Ciconia');
-
-
     return View::make('docs.index')->with([
-        'content' => ($markdown->render($file)),
+        'content' => Cache::get($cacheKey),
         'page'    => $page
     ]);
 });
 
 Route::get('search', function(){
-
     $query = Input::get('query');
 
     if($query) {
@@ -60,7 +50,6 @@ Route::get('search', function(){
 });
 
 Route::get('search/{query?}', function($query) {
-
     $query = trim($query);
 
     if($query) {
@@ -78,7 +67,6 @@ Route::get('search/{query?}', function($query) {
         'categories' => Config::get('site.postCategories'),
         'query'      => $query
     ]);
-
 });
 
 Route::get('changelog', function(){
@@ -118,7 +106,3 @@ Route::get('posts/{postId}/delete', ['uses'=>'PostController@getDelete', 'before
 
 // Static Pages
 Route::get('chat', ['uses'=>'PageController@getChat', 'as'=>'chat']);
-
-
-// Tags
-//Route::controller('tags', 'TagController');

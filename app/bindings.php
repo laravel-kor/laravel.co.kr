@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * This file contains bindings for IoC container / View
+ */
+
 use Ciconia\Ciconia;
 use Ciconia\Extension\Gfm;
 
@@ -15,3 +19,6 @@ App::singleton('Ciconia\Ciconia', function() {
 
     return $markdown;
 });
+
+
+View::share('categories', Config::get('site.postCategories'));
