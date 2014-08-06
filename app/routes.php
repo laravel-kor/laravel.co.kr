@@ -12,6 +12,10 @@ require_once 'bindings.php';
 | and give it the Closure to execute when that URI is requested.
 |
 */
+
+Route::pattern('category', '[a-zA-Z]+');
+
+
 Route::get('/', function() {
     return View::make('home')->with([
         'posts'      => Post::orderBy('id', 'desc')->take(15)->get()
@@ -95,12 +99,12 @@ Route::get('users/{userId}/{username?}', 'UserController@getById');
 Route::get('users', ['uses'=>'UserController@getIndex']);
 
 // Posts
-Route::get('posts/{category}', 'PostController@getByCategory')->where('category', '[a-zA-Z]+');
-Route::get('posts/{category}/new', ['uses'=>'PostController@getCreate', 'before'=>'auth'])->where('category', '[a-zA-Z]+');
-Route::get('posts/{postId}', 'PostController@getById')->where('category', '[0-9]+');
+Route::get('posts/{category}', 'PostController@getByCategory');
+Route::get('posts/{category}/new', ['uses'=>'PostController@getCreate', 'before'=>'auth']);
+Route::get('posts/{postId}', 'PostController@getById');
 Route::get('posts/{postId}/edit', ['uses'=>'PostController@getEdit', 'before'=>'auth']);
 Route::get('posts', ['uses'=>'PostController@getByCategory']);
-Route::post('posts/{category}/new', ['uses'=>'PostController@postCreate', 'before'=>'csrf'])->where('category', '[a-zA-Z]+');
+Route::post('posts/{category}/new', ['uses'=>'PostController@postCreate', 'before'=>'csrf']);
 Route::post('posts/{postId}/edit', ['uses'=>'PostController@postEdit', 'before'=>'csrf']);
 Route::get('posts/{postId}/delete', ['uses'=>'PostController@getDelete', 'before'=>'auth']);
 
