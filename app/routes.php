@@ -80,9 +80,9 @@ Route::get('changelog', function(){
 
 
 // Account
-Route::get('login', 'AccountController@getLogin');
+Route::get('login', ['before'=>'guest-only', 'uses'=>'AccountController@getLogin']);
 Route::post('login', 'AccountController@postLogin');
-Route::get('register', 'AccountController@getRegister');
+Route::get('register', ['before'=>'guest-only', 'uses'=>'AccountController@getRegister']);
 Route::post('register', 'AccountController@postRegister');
 Route::get('logout', 'AccountController@getLogout');
 Route::get('account/edit', ['uses'=>'AccountController@getEdit']);
