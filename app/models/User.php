@@ -3,107 +3,94 @@
 use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 
-class User extends Eloquent implements UserInterface, RemindableInterface {
+class User extends Eloquent implements UserInterface, RemindableInterface
+{
+    /**
+    * The attributes excluded from the model's JSON form.
+    *
+    * @var array
+    */
+    protected $hidden = array('password');
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
-
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('password');
-
-	/**
-	 * Get the unique identifier for the user.
-	 *
-	 * @return mixed
-	 */
-	public function getAuthIdentifier()
-	{
-		return $this->getKey();
-	}
-
-	/**
-	 * Get the password for the user.
-	 *
-	 * @return string
-	 */
-	public function getAuthPassword()
-	{
-		return $this->password;
-	}
-
-	/**
-	 * Get the e-mail address where password reminders are sent.
-	 *
-	 * @return string
-	 */
-	public function getReminderEmail()
-	{
-		return $this->email;
-	}
-
-  public function roles()
-  {
-    return $this->belongsToMany('Role', 'role_user')->withTimestamps();
-  }
-
-  public function posts()
-  {
-    return $this->hasMany('Post');
-  }
-
-  public function hasRole($key)
-  {
-    foreach($this->roles as $role)
+    /**
+    * Get the unique identifier for the user.
+    *
+    * @return mixed
+    */
+    public function getAuthIdentifier()
     {
-      if($role->name == $key)
-      {
-        return true;
-      }
+        return $this->getKey();
     }
 
-    return false;
-  }
-
-
-  public function hasAnyRole($keys)
-  {
-    if( ! is_array($keys))
+    /**
+    * Get the password for the user.
+    *
+    * @return string
+    */
+    public function getAuthPassword()
     {
-      $keys = func_get_args();
+        return $this->password;
     }
 
-    foreach($this->roles as $role)
+    /**
+    * Get the e-mail address where password reminders are sent.
+    *
+    * @return string
+    */
+    public function getReminderEmail()
     {
-      if(in_array($role->name, $keys))
-      {
-        return true;
-      }
+        return $this->email;
     }
 
-    return false;
-  }
+    public function roles()
+    {
+        return $this->belongsToMany('Role', 'role_user')->withTimestamps();
+    }
 
-	public function getRememberToken()
-	{
-	    return $this->remember_token;
-	}
+    public function posts()
+    {
+        return $this->hasMany('Post');
+    }
 
-	public function setRememberToken($value)
-	{
-	    $this->remember_token = $value;
-	}
+    public function hasRole($key)
+    {
+        foreach($this->roles as $role) {
+            if($role->name == $key) {
+                return true;
+            }
+        }
 
-	public function getRememberTokenName()
-	{
-	    return 'remember_token';
-	}
+        return false;
+    }
 
+
+    public function hasAnyRole($keys)
+    {
+        if( ! is_array($keys)) {
+            $keys = func_get_args();
+        }
+
+        foreach($this->roles as $role) {
+            if(in_array($role->name, $keys)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function getRememberToken()
+    {
+        return $this->remember_token;
+    }
+
+    public function setRememberToken($value)
+    {
+        $this->remember_token = $value;
+    }
+
+    public function getRememberTokenName()
+    {
+        return 'remember_token';
+    }
 }

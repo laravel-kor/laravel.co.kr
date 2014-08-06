@@ -1,22 +1,14 @@
 <?php
 
-class Post extends Eloquent {
+class Post extends Eloquent
+{
+    public function User()
+    {
+        return $this->belongsTo('User');
+    }
 
-  /**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'posts';
-  
-  public function User()
-  {
-      return $this->belongsTo('User');
-  }
-
-	public function getAuthIdentifier()
-	{
-		return $this->getKey();
-	}
-
+    public function getAuthIdentifier()
+    {
+        return $this->getKey();
+    }
 }

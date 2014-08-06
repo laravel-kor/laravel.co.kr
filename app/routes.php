@@ -14,7 +14,7 @@ require_once 'bindings.php';
 */
 
 Route::pattern('category', '[a-zA-Z]+');
-
+Route::pattern('postId', '\d+');
 
 Route::get('/', function() {
     return View::make('home')->with([
@@ -75,10 +75,10 @@ Route::get('search/{query?}', function($query) {
 
 Route::get('changelog', function(){
     $path = __DIR__ . '/../changelog.md';
-    $markdown = new MarkdownParser();
+    $markdown = App::make('Ciconia\Ciconia');
 
     return View::make('changelog')->with([
-        'content' => ($markdown->transformMarkdown(File::get($path)))
+        'content' => ($markdown->render(File::get($path)))
     ]);
 });
 
@@ -100,13 +100,13 @@ Route::get('users', ['uses'=>'UserController@getIndex']);
 
 // Posts
 Route::get('posts/{category}', 'PostController@getByCategory');
-Route::get('posts/{category}/new', ['uses'=>'PostController@getCreate', 'before'=>'auth']);
+Route::get('posts/{category}/new', ['before'=>'auth', 'uses'=>'PostController@getCreate']);
 Route::get('posts/{postId}', 'PostController@getById');
-Route::get('posts/{postId}/edit', ['uses'=>'PostController@getEdit', 'before'=>'auth']);
+Route::get('posts/{postId}/edit', ['before'=>'auth', 'uses'=>'PostController@getEdit']);
 Route::get('posts', ['uses'=>'PostController@getByCategory']);
-Route::post('posts/{category}/new', ['uses'=>'PostController@postCreate', 'before'=>'csrf']);
-Route::post('posts/{postId}/edit', ['uses'=>'PostController@postEdit', 'before'=>'csrf']);
-Route::get('posts/{postId}/delete', ['uses'=>'PostController@getDelete', 'before'=>'auth']);
+Route::post('posts/{category}/new', ['before'=>'csrf', 'uses'=>'PostController@postCreate']);
+Route::post('posts/{postId}/edit', ['before'=>'csrf', 'uses'=>'PostController@postEdit']);
+Route::get('posts/{postId}/delete', ['before'=>'auth', 'uses'=>'PostController@getDelete']);
 
 // Static Pages
 Route::get('chat', ['uses'=>'PageController@getChat', 'as'=>'chat']);
