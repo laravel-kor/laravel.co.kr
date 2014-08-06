@@ -2,16 +2,6 @@
 
 class UserController extends BaseController
 {
-    protected $categories;
-    /**
-    * Instantiate a new UserController instance
-    */
-    public function __construct()
-    {
-        $this->beforeFilter('csrf', ['on' => 'post']);
-        $this->categories = Config::get('site.postCategories');
-    }
-
     /**
     * Show all users
     */
