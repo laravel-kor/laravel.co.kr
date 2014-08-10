@@ -44,7 +44,7 @@
 
             <div class="control-group">
                 <div class="controls">
-                    button type="submit" class="btn">회원가입</button>
+                    <button type="submit" class="btn">회원가입</button>
                 </div>
             </div>
 
