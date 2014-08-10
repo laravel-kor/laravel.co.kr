@@ -68,7 +68,6 @@ Route::get('search/{query?}', function($query) {
 
     return View::make('search')->with([
         'posts'      => $posts,
-        'categories' => Config::get('site.postCategories'),
         'query'      => $query
     ]);
 });
