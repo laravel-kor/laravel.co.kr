@@ -21,8 +21,7 @@ class UserController extends BaseController
 
         return View::make('users.view')->with([
             'user'        => $user,
-            'posts'       => $posts,
-            'categories'  => $this->categories
+            'posts'       => $posts
         ]);
     }
 
@@ -36,8 +35,7 @@ class UserController extends BaseController
 
         return View::make('users.posts')->with([
           'user'        => $user,
-          'posts'       => $posts,
-          'categories'  => $this->categories
+          'posts'       => $posts
         ]);
     }
 }
