@@ -9,6 +9,7 @@
     <meta name="author" content="">
     <meta name="robots" content="index,follow">
     <meta name="google-site-verification" content="IDQJHKTGY5vbkBN5t5l7F9wF8a1A2PIhv4CoWXb5QuE" />
+    <meta name="naver-site-verification" content="f9af024a6dea30936cb8b0a7334b8c7b42b9b698"/>
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
 
     <!-- Le styles -->
