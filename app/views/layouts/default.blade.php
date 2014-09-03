@@ -8,6 +8,7 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <meta name="robots" content="index,follow">
+    <meta name="google-site-verification" content="IDQJHKTGY5vbkBN5t5l7F9wF8a1A2PIhv4CoWXb5QuE" />
     <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
 
     <!-- Le styles -->
