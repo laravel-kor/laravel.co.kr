@@ -90,6 +90,8 @@ Route::post('register', 'AccountController@postRegister');
 Route::get('logout', 'AccountController@getLogout');
 Route::get('account/edit', ['uses'=>'AccountController@getEdit']);
 Route::post('account/edit', ['uses'=>'AccountController@postEdit']);
+Route::get('account/delete', ['uses'=>'AccountController@getDelete']);
+Route::post('account/delete', ['uses'=>'AccountController@postDelete']);
 
 // Users
 Route::get('users/{userId}/posts', 'UserController@getPostsById');

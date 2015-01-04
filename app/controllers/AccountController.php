@@ -135,6 +135,26 @@ class AccountController extends BaseController
     public function getLogout()
     {
         Auth::logout();
-    	return Redirect::to('/')->with('success', '로그아웃 되었습니다.');
+        return Redirect::to('/')->with('success', '로그아웃 되었습니다.');
+    }
+
+    /**
+    * Delete
+    */
+    public function getDelete()
+    {
+        return View::make('account.delete')->with('header', '탈퇴')->with('user', Auth::user());
+    }
+
+    /**
+    * Delete
+    */
+    public function postDelete()
+    {
+        $user= Auth::user();
+        $user->posts()->delete();
+        $user->delete();
+        Auth::logout();
+        return Redirect::to('/')->with('success', '탈퇴 되었습니다.');
     }
 }
