@@ -1,4 +1,6 @@
-<?php if (!isset($category)) { $category = null; } ?>
+<?php if (!isset($category)) {
+    $category = null;
+} ?>
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
@@ -67,7 +69,7 @@
 
                     <li {{ (Request::is('users*') ? 'class="active"' : '') }}><a href="{{ URL::to('users') }}">사용자</a></li>
 
-                    <li {{ (Request::is('chat*') ? 'class="active"' : '') }}><a href="{{ URL::to('chat') }}">채팅</a></li>
+                    <li><a href="/posts/211">채팅</a></li>
 
                 </ul>
 
