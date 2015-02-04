@@ -14,7 +14,7 @@
 
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    <li {{ (Request::is('docs*') ? 'class="active"' : '') }}><a href="{{ URL::to('docs') }}">한글 매뉴얼</a></li>
+                    <li {{ (Request::is('docs*') ? 'class="active"' : '') }}><a href="{{ route('doc4') }}">한글 매뉴얼</a></li>
 
                     <li class='dropdown {{ (Request::is('posts*') ? "active" : '') }}'>
                         <a href="{{ URL::to('posts') }}" class='dropdown'>게시판</a>

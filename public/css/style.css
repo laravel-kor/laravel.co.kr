@@ -323,3 +323,32 @@ html pre code {
   display: block;
 }
 */
+
+#versions ul {
+  list-style: none;
+}
+
+
+#versions li {
+  float: left;
+  margin-left: 5px;
+  background: #f4928f;
+  padding: 5px;
+  opacity: 0.6;
+}
+
+#versions {
+  float: right;
+}
+
+#versions li a {
+  color: #fff;
+  font-size: 1.125em;
+  padding: 15px;
+}
+
+
+#versions li.current {
+  background: #f3726d;
+  opacity: 1;
+}
