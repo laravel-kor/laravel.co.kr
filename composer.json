@@ -1,6 +1,6 @@
 {
 	"require": {
-		"laravel/framework": "4.2.*",
+		"laravel/framework": "4.2.8",
         "kzykhys/ciconia": "~1.0.0"
 	},
 	"autoload": {
