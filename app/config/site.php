@@ -1,7 +1,7 @@
 <?php
 
 return array(
-  
+
   'postCategories' => array(
     'all'       => '전체 글',
     'notice'    => '공지사항',
@@ -13,9 +13,12 @@ return array(
     'sites'     => 'Laravel 사이트 소개',
     'jobs'      => '구인구직',
   ),
-  
+
   'googleAnalyticsID' => 'UA-38999150-1',
-  
+
   'disqusShortname' => 'laravelkorea',
-  
+  'DISQUS_PUBLIC_KEY' => getenv('DISQUS_PUBLIC_KEY'),
+  'DISQUS_SECRET_KEY' => getenv('DISQUS_SECRET_KEY')
+
+
 );

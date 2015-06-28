@@ -33,6 +33,7 @@
 </div> <!-- /container -->
 
 @section('scripts')
+@include('layouts.includes.disqusSSO')
 <script type="text/javascript">
 
     var _gaq = _gaq || [];
