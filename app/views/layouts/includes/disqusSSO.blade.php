@@ -38,6 +38,13 @@ if ($user = Auth::user()) {
 var disqus_config = function() {
     this.page.remote_auth_s3 = "<?php echo "$message $hmac $timestamp"; ?>";
     this.page.api_key = "<?php echo Config::get('site.DISQUS_PUBLIC_KEY'); ?>";
+
+// This adds the custom login/logout functionality
+    this.sso = {
+        name:   "Laravel Korea",
+        url:        "https://www.laravel.co.kr/login/",
+        logout:  "https://www.laravel.co.kr/logout/",
+    };
 }
 </script>
 <?php } ?>
