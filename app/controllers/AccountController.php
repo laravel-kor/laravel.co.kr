@@ -135,7 +135,7 @@ class AccountController extends BaseController
     public function getLogout()
     {
         Auth::logout();
-        return Redirect::to('/')->with('success', '로그아웃 되었습니다.');
+        return Redirect::back()->with('success', '로그아웃 되었습니다.');
     }
 
     /**
