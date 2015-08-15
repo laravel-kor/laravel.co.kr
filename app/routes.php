@@ -52,19 +52,6 @@ Route::get('search', function () {
     $query = Input::get('query');
 
     if ($query) {
-        return Redirect::to('/search/'.Input::get('query'));
-    }
-
-    return View::make('search')->with([
-        'posts' => false,
-        'query' => false,
-    ]);
-});
-
-Route::get('search/{query?}', function ($query) {
-    $query = trim($query);
-
-    if ($query) {
         $posts = Post::with('user')
             ->where('title', 'like', '%'.$query.'%')
             ->orWhere('content', 'like', '%'.$query.'%')
