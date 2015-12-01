@@ -154,7 +154,7 @@ class AccountController extends BaseController
         $user= Auth::user();
         $user->posts()->delete();
         $user->delete();
-        Auth::logout();
+        // Auth::logout();
         return Redirect::to('/')->with('success', '탈퇴 되었습니다.');
     }
 }
